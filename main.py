@@ -59,8 +59,8 @@ def handler(request):
         
         #heroku postgerSQLに接続
         unix_socket = os.environ['INSTANCE_UNIX_SOCKET']
-        username = os.environ['USERNAME']
-        password = os.environ['PASSWORD']
+        username = os.environ['DB_USER']
+        password = os.environ['DB_PASS']
         dbname = os.environ['DB_NAME']
         
         try:
