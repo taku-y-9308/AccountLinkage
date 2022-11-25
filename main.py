@@ -43,7 +43,7 @@ def handler(request):
                 actions=[
                     URIAction(
                         label='LINEアカウント連携',
-                        uri="https://shiftmanagementapp-heroku.herokuapp.com/account_linkage?linkToken="+str(link_token_response.link_token)
+                        uri="https://shiftmanagementapp.com/account_linkage?linkToken="+str(link_token_response.link_token)
                     )
                 ]
             )
