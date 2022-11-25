@@ -58,14 +58,13 @@ def handler(request):
         logger.info(f"AccountLinkEventを受信しました。user_id:{line_user_id},nonce:{nonce}")
         
         #heroku postgerSQLに接続
-        host = os.environ['HOST']
+        unix_socket = os.environ['INSTANCE_UNIX_SOCKET']
         username = os.environ['USERNAME']
         password = os.environ['PASSWORD']
         dbname = os.environ['DB_NAME']
-        port = os.environ['PORT']
         
         try:
-            conn = psycopg2.connect(f"dbname={dbname} user={username} password={password} host={host} port={port}")
+            conn = psycopg2.connect(dbname=dbname,user=username,password=password,host=unix_socket)
         
         except psycopg2.OperationalError as e:
             logging.error('ERROR: Unexpected error: Could not connect to PostgreSQL instance.')
